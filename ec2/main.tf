@@ -33,7 +33,7 @@ data "aws_ami" "exam-terraform-ami" {
 resource "aws_instance" "exam-terraform_a" {
     ami                    = data.aws_ami.exam-terraform-ami.id
     instance_type          = "t2.micro"
-    subnet_id              = "${module.network.app_subnet_a.id}"
+    subnet_id              = "${module.networking.app_subnet_a.id}"
     vpc_security_group_ids = ["${aws_security_group.sg_exam-terraform.id}"]
     key_name               = "${module.security_rules.key_name}"
     user_data              = "${file("install_wordpress.sh")}"
@@ -48,7 +48,7 @@ resource "aws_instance" "exam-terraform_a" {
 resource "aws_instance" "exam-terraform_b" {
     ami                    = data.aws_ami.exam-terraform-ami.id
     instance_type          = "t2.micro"
-    subnet_id              = "${module.network.app_subnet_b.id}"
+    subnet_id              = "${module.networking.app_subnet_b.id}"
     vpc_security_group_ids = ["${aws_security_group.sg_exam-terraform.id}"]
     key_name               = "${module.security_rules.key_name}"
     user_data              = "${file("install_wordpress.sh")}"
@@ -62,7 +62,7 @@ resource "aws_instance" "exam-terraform_b" {
 
 resource "aws_security_group" "sg_exam-terraform" {
     name   = "sg_exam-terraform"
-    vpc_id = "${module.network.cidr_vpc.id}"
+    vpc_id = "${module.networking.cidr_vpc.id}"
 
     tags = {
         Name = "sg-exam-terraform"

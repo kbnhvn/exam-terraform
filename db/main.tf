@@ -14,7 +14,7 @@ resource "aws_db_instance" "aws_exam-terraform_db_a" {
     engine               = "mysql"
     engine_version       = "5.7"
     instance_class       = "db.t3.micro"
-    db_subnet_group_name = "${module.network.public_subnet_a.name}"
+    db_subnet_group_name = "${module.networking.public_subnet_a.name}"
     port                 = 3306
     skip_final_snapshot  = true
     password = var.db_password
@@ -27,7 +27,7 @@ resource "aws_db_instance" "aws_exam-terraform_db_b" {
     engine               = "mysql"
     engine_version       = "5.7"
     instance_class       = "db.t3.micro"
-    db_subnet_group_name = "${module.network.public_subnet_b.name}"
+    db_subnet_group_name = "${module.networking.public_subnet_b.name}"
     port                 = 3306
     skip_final_snapshot  = true
     password = var.db_password

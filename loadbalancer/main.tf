@@ -18,7 +18,7 @@ resource "aws_lb" "lb_exam-terraform" {
 	name               = "exam-terraform-alb"
 	internal           = false
 	load_balancer_type = "application"
-	subnets            = ["${module.network.public_subnet_a.id}", "${module.network.public_subnet_b.id}"]
+	subnets            = ["${module.networking.public_subnet_a.id}", "${module.networking.public_subnet_b.id}"]
 	security_groups    = ["${aws_security_group.sg_application_lb.id}"]
 
 	enable_deletion_protection = false
