@@ -35,9 +35,11 @@ variable "db_password" {
 variable "az_a" {
     description = "Availability Zone A"
     type        = string
+    default = "eu-west-3a"
 }
 
 variable "az_b" {
     description = "Availability Zone B"
     type        = string
+    default = "eu-west-3b"
 }
