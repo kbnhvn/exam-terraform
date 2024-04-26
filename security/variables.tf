@@ -10,3 +10,15 @@ variable "az_a" {
 variable "az_b" {
     type        = string
 }
+
+variable "cidr_vpc" {
+    type        = string
+}
+
+variable "public_subnet_a" {
+    type        = string
+}
+
+variable "public_subnet_b" {
+    type        = string
+}

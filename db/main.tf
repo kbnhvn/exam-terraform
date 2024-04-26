@@ -1,20 +1,12 @@
-# ------ Import modules ------ #
-
-module "networking" {
-    source = "../networking"
-    az_a = var.az_a
-    az_b = var.az_b
-}
-
 # ------ Databases ------ #
 
 resource "aws_db_instance" "aws_exam-terraform_db_a" {
     allocated_storage    = 10
-    db_name              = "exam-terraform_db_a"
+    db_name              = "examTerraformDbA"
     engine               = "mysql"
     engine_version       = "5.7"
     instance_class       = "db.t3.micro"
-    db_subnet_group_name = "${module.networking.public_subnet_a.name}"
+    db_subnet_group_name = var.exam-terraform_db_subnet_group
     port                 = 3306
     skip_final_snapshot  = true
     password = var.db_password
@@ -23,11 +15,11 @@ resource "aws_db_instance" "aws_exam-terraform_db_a" {
 
 resource "aws_db_instance" "aws_exam-terraform_db_b" {
     allocated_storage    = 10
-    db_name              = "exam-terraform_db_b"
+    db_name              = "examTerraformDbB"
     engine               = "mysql"
     engine_version       = "5.7"
     instance_class       = "db.t3.micro"
-    db_subnet_group_name = "${module.networking.public_subnet_b.name}"
+    db_subnet_group_name = var.exam-terraform_db_subnet_group
     port                 = 3306
     skip_final_snapshot  = true
     password = var.db_password

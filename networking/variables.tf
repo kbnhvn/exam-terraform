@@ -24,9 +24,9 @@ variable "cidr_app_subnet_b" {
 }
 
 variable "az_a" {
-    type        = string
+    type = string
 }
 
 variable "az_b" {
-    type        = string
+    type = string
 }

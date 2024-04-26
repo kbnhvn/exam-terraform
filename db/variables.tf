@@ -15,3 +15,7 @@ variable "az_a" {
 variable "az_b" {
     type        = string
 }
+
+variable "exam-terraform_db_subnet_group" {
+    type = string
+}

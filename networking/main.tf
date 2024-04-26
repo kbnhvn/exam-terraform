@@ -42,7 +42,7 @@ resource "aws_subnet" "app_subnet_a" {
 	vpc_id                  = "${aws_vpc.exam-terraform_vpc.id}"
 	cidr_block              = var.cidr_app_subnet_a
 	map_public_ip_on_launch = "true"
-	availability_zone       = var.az_b
+	availability_zone       = var.az_a
 
 	tags = {
 		Name = "app-a"
@@ -60,6 +60,17 @@ resource "aws_subnet" "app_subnet_b" {
 		Name = "app-b"
 	}
 	depends_on = [aws_vpc.exam-terraform_vpc]
+}
+
+# ------ DB Subnet Group ------ #
+
+resource "aws_db_subnet_group" "exam-terraform_db_subnet_group" {
+    name       = "exam-terraform-db-subnet-group"
+    subnet_ids = [aws_subnet.app_subnet_a.id, aws_subnet.app_subnet_b.id]
+
+    tags = {
+        Name = "exam-terraform_db_subnet_group"
+    }
 }
 
 # ------ Internet Gateway ------ #
